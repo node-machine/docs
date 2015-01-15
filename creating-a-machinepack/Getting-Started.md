@@ -72,7 +72,34 @@ There is only 1 machine in this machinepack.
 
  So what does `say-hello` do?
 
- <ask Mike about the CLI plans for this>
+To execute a machine from the command-line **type:**
+
+```sh
+$ machinepack exec say-hello
+```
+
+You'll be prompted for a value of the `input` of the _Machine_, in this case a `name` (e.g. John Galt).  The _Machine_ will then be executed.
+
+```sh
+? Please enter the name of the person that will be sent the hello message.
+name:  John Galt
+Hello John Galt, your secret code is 0.1592391876038164
+________________________________________________________________˛
+                                                                 
+   Tuneyards.sayHello()
+  
+   » name "John Galt"
+
+________________________________________________________________¸ 
+  | 
+  • 
+  The machine triggered its success exit and returned a value:
+   { numLettersInName: 9, secretCode: '0.1592391876038164' }
+
+
+ To run again:
+ machinepack exec say-hello --name='John Galt'
+```
 
 
 ###Adding a `machine` to a `machinepack`
