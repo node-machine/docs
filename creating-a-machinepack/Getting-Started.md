@@ -42,9 +42,9 @@ To get started **type**:
 $yo machinepack
 ```
 
-You'll be prompted for a friendly `name`.   By entering _Tuneyards_, the name will become `machinepack-tuneyards`.
+You'll be prompted for a friendly `name`.   By entering _Klout_, the name will become `machinepack-klout`.
 
-Next, you'll be asked to provide a `description`.  We'll enter, _Communicate with the Tuneyards API to get songs, tour dates, etc._
+Next, you'll be asked to provide a `description`.  We'll enter, _Communicate with the Klout API to get Ids, Klout Scores, etc._
 
 The generator gives you the option to create an example machine.  Let's go ahead and type `y` for yes and generate the machine.
 
@@ -54,9 +54,9 @@ All of the necessary structure will be created including installing any dependen
 
 ###Exploring your first `machinepack`.
 
-Change into the new `machinepack-tuneyards` folder by **typing**:
+Change into the new `machinepack-Klout` folder by **typing**:
 
-`$cd machinepack-tuneyards`
+`$cd machinepack-klout`
 
 We can take a look at the example `machine` by **typing**:
 
@@ -70,7 +70,7 @@ There is only 1 machine in this machinepack.
  • say-hello
  ```
 
- So what does `say-hello` do?
+####So what does `say-hello` do?
 
 To execute a machine from the command-line **type:**
 
@@ -78,7 +78,7 @@ To execute a machine from the command-line **type:**
 $ machinepack exec say-hello
 ```
 
-You'll be prompted for a value of the `input` of the _Machine_, in this case a `name` (e.g. John Galt).  The _Machine_ will then be executed.
+You'll be prompted for a value of the `input` of the _Machine_, in this case a `name` (e.g. John Galt).  The _Machine_ will then  execute.
 
 ```sh
 ? Please enter the name of the person that will be sent the hello message.
@@ -135,3 +135,27 @@ There are 2 machines in this machinepack:
  • get-song
 ```
 
+To get an expanded view of the `machinepack` **type:**
+
+```sh
+$ machinepack info
+```
+
+The following information should be displayed:
+
+```sh
+Tuneyards -- Communicate with the Tuneyards API to get songs, tour dates, etc.
+
+
+INSTALLATION
+     npm install machinepack-tuneyards@^0.1.0 --save
+
+
+USAGE
+     var Tuneyards = require('machinepack-tuneyards');
+
+
+AVAILABLE METHODS
+     Tuneyards.sayHello()   (say-hello)
+     Tuneyards.getSong()   (get-song)
+```
