@@ -1,4 +1,5 @@
-##What are machinepacks?
+# What are machinepacks?
+
 Machinepacks are bundles of related machines.  They might be unified by the API they talk to (e.g. [Stripe](http://node-machine.org/machinepack-stripe)) or their purpose (e.g. [Passwords](http://node-machine.org/machinepack-passwords)).  It's really up to you!  The important thing to remember is that machinepacks are just a versioned, organizational unit you can publish and install.
 
 For example, as of February 2015, [machinepack-github](http://node-machine.org/machinepack-github) contains 11 machines; it supports everything from fetching basic metadata about a particular GitHub user, to listing repo activity, to creating a new repo altogether.  The machinepack can be installed and required from your Node.js code like any other `npm` module:
