@@ -1,5 +1,7 @@
 ##What are machinepacks?
-**Machinepacks** are bundles of _Machines_ that make it easy to aggregate related tasks that each _Machine_ performs.  For example, [machinepack-github](http://node-machine.org/machinepack-github) contains seven _Machines_ ranging from fetching a particular repo to listing repo activity.  The `machinepack` can then be required like any other `npm` module.
+Machinepacks are bundles of related machines.  They might be unified by the API they talk to (e.g. [Stripe](http://node-machine.org/machinepack-stripe)) or their purpose (e.g. [Passwords](http://node-machine.org/machinepack-passwords)).  It's really up to you!  The important thing to remember is that machinepacks are just a versioned, organizational unit you can publish and install.
+
+For example, as of February 2015, [machinepack-github](http://node-machine.org/machinepack-github) contains 11 machines; it supports everything from fetching basic metadata about a particular GitHub user, to listing repo activity, to creating a new repo altogether.  The machinepack can be installed and required from your Node.js code like any other `npm` module:
     
 ```javascript
 var Github = require('machinepack-github');
@@ -19,32 +21,38 @@ Github.getRepo({
 });
 ```
 
-_Command-line_ tools are provided in order to make _Machinepacks_ easier to create.
+###Installing the command-line tools
 
-###Installing `machinepack` _command-line_ tools
+In the process of using machines for the past year or so, the core team behind this project and specification created a couple of tools to make machines easier to work with.  The two we'll be using in this walkthrough are `machinepack` and `generator-machinepack`.  Both are completely optional, but also readily available on NPM.
 
-The _command-line generator_ requires [Yoeman](http://yeoman.io/), so if you don't already have [Yoeman](http://yeoman.io/) installed, you can do so now by **_typing_**:
+##### Yeoman generator
 
-```sh
-$ npm install -g yo
-```
+> The Yeoman generator (`generator-machinepack`) requires [Yeoman](http://yeoman.io/).  If you don't already have Yeoman globally installed, you'll want to do that before proceeding:
+> 
+> ```sh
+> $ npm install -g yo
+> ```
 
-Next, install the `yoeman` `machinepack` generator by **_typing_**:
+There is a Yeoman generator for machinepacks for your convenience.  You will likely only use this tool every now and then, but it's worth it to get you off the ground running.  To install:
 
 ```sh
 $ npm install -g generator-machinepack
 ```
 
-Finally, install the `machinepack` _command-line tools_ by **_typing_**:
+##### The `machinepack` CLI tool
+
+The `machinepack` tool was designed to solve a few key annoyances of building machines.  It provides the capability of testing machines from the command-line with an interactive prompt, a readily-accesible manpage for checking a pack's metadata and machines, as well as shortcuts for simple operations like adding or removing machines to a pack.  If you're like me, and working with machines on a regular basis, you'll find it indispensible.
+
+To install the `machinepack` command-line interface from NPM:
 
 ```sh
 $ npm install -g machinepack
 ```
 
-> **Note:** If you have an issue try `$ sudo `.
+> **Note:** If you run into install issues, try `$ sudo`.
 
 ###Generating your first `machinepack`.
-I ran across an interesting [API](https://klout.com/s/developers/v2) from [Klout](https://klout.com/). Klout uses social media analytics to rank people based upon their social influence via a Klout Score.  So we'll create a couple of _Machines_ that will return a person's _Klout ID_ and based upon that _id_, their _Klout Score_. 
+I ran across an interesting [API](https://klout.com/s/developers/v2) from [Klout](https://klout.com/). Klout uses social media analytics to rank people based upon their social influence via a Klout Score.  So we'll create a couple of machines that will return a person's _Klout ID_ and based upon that _id_, their _Klout Score_. 
 
 To begin, we'll generate a _bare bones_ `machinepack` by **_typing_**:
 
@@ -114,13 +122,15 @@ There is only 1 machine in this machinepack.
 
 ####So what does `say-hello` do?
 
-To execute a _Machine_ from the command-line **type:**
+We could create a node script that requires the machine programatically and then calls `.exec()` on it, but that sort of sucks.  Alternatively, we could use the node REPL, but.... still sort of sucks.
+
+Instead, we'll take advantage of the most powerful feature of the `machinepack` command-line tool- the ability to execute a machine interactively. To run a machine from the command-line:
 
 ```sh
 $ machinepack exec say-hello
 ```
 
-You'll be prompted for a value of the `input` of the _Machine_, in this case a `name` (e.g. John Galt).  The _Machine_ will then execute.
+If the machine has any required inputs, you'll be prompted to enter a value for each of them.  In this case, you'll be asked to enter a "name":
 
 ```sh
 ? Please enter the name of the person that will be sent the hello message.
@@ -140,12 +150,15 @@ ________________________________________________________________¸
 ```
 
 
-###Adding a `machine` to a `machinepack` 
-Adding a `machine` to an exisitng `machinepack` is simple.  From the root of the `machinepack` **_type_**:
+### Adding a new machine
 
-`machinepack add`
+Adding a machine to an exisitng pack is simple.  From the root directory of your machinepack, run:
 
-You'll be prompted for a friendly name.  For example, _Get Klout id_ will produce a _Machine_ with the name _get-klout-id_.
+```sh
+$ machinepack add
+```
+
+You'll be prompted for a "friendly name": 
 
 ```sh
 ? What would you like to use as the "friendly name" for your new machine?
@@ -153,35 +166,27 @@ You'll be prompted for a friendly name.  For example, _Get Klout id_ will produc
  Get Klout id
 ```
 
-> In userland, the friendly name will become camel-cased and therefore can be accessed using `.getCloudId()`.
+_(Don't worry if you mess up, you can always change this later)_
 
-- Sentence-case (like a normal sentence- only uppercase the first letter of the first word)
-- No ending punctuation.
-- Less than 50 characters (i.e. 2-4 words)
 
-Next, you'll be asked for a `description`.  We'll use, _Get the Klout Id from a Twitter screen name._
+The string you enter will be used as the `friendlyName` for the new machine, and the machine's `identity` will also be inferred from it automatically. For example, if you enter "_Get Klout id_", you'll end up with a file in your machines folder named "_get-klout-id_".  In userland, you'll be able to call this machine as the `.getKloutId()` method on the machinepack.  This method name is determined by converting the dash-delimited `identity` into camel-case.
 
- - Clear, 1 sentence description with in the imperative mood (e.g. "Delete all..." not "Deletes all..."). 
- - Ending punctuation is optional, but not necessary
- - Should be less than 80 characters.
+
+Next, you'll be asked for a `description`.  Make sure you type something less than 80 characters long, and in the imperative mood (e.g. "Delete all..." not "Deletes all...").  This is important for consistency and proper grammar and punctuation in the generated documentation.
 
 ```sh
 ? Describe this machine in 80 characters or less.
 (e.g. "List all Twitter followers for a particular account.")
- Get the Klout Id from a Twitter screen name.
+ Get the Klout id for a user given her Twitter screen name.
 ```
 
-We're not going to provide an optional extended description, so we'll press **_enter_**.
+We're not going to provide an optional extended description, so we'll press **_enter_** to skip the prompt.  When we're all done, you should see the following message:
 
-```sh
-Get the Klout Id from a Twitter screen name.
-? Provide a more in-depth description of the machine (optional)
+```
+New machine (`get-klout-id`) successfully added to machinepack.
 ```
 
-You should see the following message:
-`New machine (`get-klout-id`) successfully added to machinepack.`
-
-Now when you **type** `machinepack ls` you should see:
+Not too shabby, right?  But before we celebrate, let's make sure it worked. When you run `machinepack ls` you should see:
 
 ```sh
 There are 2 machines in this machinepack:
@@ -190,7 +195,9 @@ There are 2 machines in this machinepack:
  • say-hello
 ```
 
-To get an expanded view of the `machinepack` **_type_**
+### Inspecting your pack with `mp info`
+
+Before we move on, I'd like to add one more useful strategy to your bag of tricks.  From the root of your machinepack, give this a go:
 
 ```sh
 $ machinepack info
@@ -215,26 +222,28 @@ AVAILABLE METHODS
      Klout.getKloutId()   (get-klout-id)
 ```
 
+The `mp info` utliity is a great way to get a quick reminder of what's in the pack you're looking at.  It's particularly helpful when pulling down a pack you haven't worked with in a few weeks/months/years/etc.
 
-###Implementing the `Get Klout Id` _Machine_
 
-You can follow along with a walkthrough of building this machine in the ["Your First Machine" tutorial]().
+### Implementing our first machine
 
-###Final Clean-up
+You can follow along with a walkthrough where we implement a complete machine (`.getKloutId()`) [here](http://node-machine.org/implementing/Your-First-Machine).  By the end of that guide, you should have a solid mental model for how and why machines work the way they do, as well as a working machine you can immediately start using as a copy+paste example.  When you feel confident you've got a handle on how machines work and you're ready to learn how to publish a machinepack, continue on to the next section.
 
-First remove the sample `say-hello` machine by **_typing:_**
+### Publishing a machinepack
 
-```sh
-$ machinepack rm say-hello
-```
-
-Also remove `DELETE_THIS_FILE.md` by **_typing:_**
+First, remove the sample `say-hello` machine.  You could manually delete `machines/say-hello.js`, then remove the machine from the list in your package.json file.  But that's kind of annoying.  Luckily our old friend the command-line tool includes a helper script just for occasions like these:
 
 ```sh
-$ rm -rf DELETE_THIS_FILE.md
+$ mp rm say-hello
 ```
 
-Commit the project to github and then update the `package.json` with the resulting repo:
+While we're at it, let's give our code one last pass to see if there's anything else we don't want to publish to the whole world.  Looks like the yeoman generator created an extraneous file, helpfully titled "DELETE_THIS_FILE.md".  Let's delete that:
+
+```sh
+$ rm DELETE_THIS_FILE.md
+```
+
+Next, we'll update the `package.json` file with the URL of the GitHub repo where our code is hosted:
 
 ```javascript
 "repository": {
@@ -243,14 +252,32 @@ Commit the project to github and then update the `package.json` with the resulti
   },
 ```
 
-###Publishing `machinepack-klout`
+This is a good idea with any node module, but for us it's especially important since it will allow node-machine.org to display a "View Source" button on the manpage for your machinepack, and for each of its machines.
+
+Finally, now that we're all ready to go, we'll create a git tag and a commit message for the very first version of our machinepack, v1.0.0.  Once again, there is a helpful tool that does this for us; only this time, it's npm itself:
+
+```sh
+$ npm version major
+```
+
+> Confused about what's going on here?  You can learn more about semantic versioning, or "semver" on [semver.org](http://semver.org/).
+
+Ok now push that up:
+
+```sh
+$ git push && git push --tags
+```
+
+And publish v1.0.0 of your machinepack to npm:
 
 ```sh
 $ npm publish
 ```
 
-> **Note:** Of course since `machinepack-klout` already exists, you won't be able to publish it npmjs.org.  
+Of course since `machinepack-klout` already exists, you won't be _actually_ be able to publish it to NPM.  But you get the idea.
 
-Congrats on creating your first `machinepack`! There's a ton of _Machines_ that need to be created so go forth and code! :-)
+> By the way, if you haven't published a module to NPM before, don't worry-- it's super easy.  Just [sign up on NPM's website](https://www.npmjs.org/), then log in from the command-line using `npm login`.  After that, if you try running `npm publish` again, you should have better results.
+
+Congratulations on creating your first machinepack! There are hundreds of machines already published and available on NPM, but there is still plenty of work to do.  If you can imagine it implemented in code, you can build it as a machine.  Go forth and code... and good luck.
 
 
