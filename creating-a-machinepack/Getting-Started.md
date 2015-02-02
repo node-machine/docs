@@ -279,6 +279,6 @@ Of course since `machinepack-klout` already exists, you won't be _actually_ be a
 
 > By the way, if you haven't published a module to NPM before, don't worry-- it's super easy.  Just [sign up on NPM's website](https://www.npmjs.org/), then log in from the command-line using `npm login`.  After that, if you try running `npm publish` again, you should have better results.
 
-Congratulations on creating your first machinepack! There are hundreds of machines already published and available on NPM, but there is still plenty of work to do.  If you can imagine it implemented in code, you can build it as a machine.  Go forth and code... and good luck.
+Congratulations on creating your first machinepack! There are hundreds of machines already published and available on NPM, but there is still plenty of work to do.  If you can imagine it implemented in a Node module, you can build it as a machine.  Go forth and code... and good luck.
 
 
