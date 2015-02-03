@@ -33,7 +33,7 @@ Machines make your app more stable and maintainable by encouraging thin controll
 You don't have to implement your entire app as machines from the beginning-- in fact, you can start whenever you like, and use as few or as many machines as makes sense.  We've found that machines are a lot like any other new programming paradigm in that it's best to start casually (_when you have a hammer, everything looks like a nail_ and all that).  So maybe think about it like this: next time you're thinking "hey I need to pull this out into a function...", try writing a machine instead.
 
 
-### Can I use a machine from _inside_ the `fn` of one of my machines?
+### Can I use other machines from _inside_ the `fn` of a machine I'm building?
 
 Indeed, just npm install desired machinepack like you would anywhere else:
 
