@@ -2,7 +2,7 @@
 
 This is a quick reference sheet for seeing how validation and coercion work for inputs.
 
-> These tables will eventually be automatically generated.
+<!-- > These tables will eventually be automatically generated. -->
 
 ## Principles
 
