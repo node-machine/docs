@@ -119,7 +119,6 @@ module.exports = {
       required: true
     }
   },
-  defaultExit: 'success',
   exits: {
     error: {
       description: 'Unexpected error occurred.'
@@ -255,7 +254,6 @@ module.exports = {
       required: true
     }
   },
-  defaultExit: 'success',
   exits: {
     error: {
       description: 'Unexpected error occurred.'
@@ -412,7 +410,7 @@ fn: function(inputs, exits) {
 };
 ```
 
-Here's the complete code for the `Get Kout Score` _Machine_.
+Here's the complete code for the `Get Klout Score` _Machine_.
 
 ```javascript
 module.exports = {
@@ -431,7 +429,6 @@ module.exports = {
       required: true
     }
   },
-  defaultExit: 'success',
   exits: {
     error: {
       description: 'Unexpected error occurred.'
