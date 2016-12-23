@@ -22,7 +22,7 @@ Github.getRepo({
 });
 ```
 
-###Installing the command-line tools
+### Installing the command-line tools
 
 In the process of using machines for the past year or so, the core team behind this project and specification created a couple of tools to make machines easier to work with.  The two we'll be using in this walkthrough are `machinepack` and `generator-machinepack`.  Both are completely optional, but also readily available on NPM.
 
