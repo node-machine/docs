@@ -63,7 +63,7 @@ To begin, we'll generate a bare bones machinepack by typing:
 $ yo machinepack
 ```
 
-You'll be prompted for a friendly name.   By entering "Klout", the machinepack name will become `machinepack-klout`.
+You'll be prompted for a "friendly name".   By entering "Klout", the machinepack name will become `machinepack-klout`.
 
 ```sh
      _-----_
