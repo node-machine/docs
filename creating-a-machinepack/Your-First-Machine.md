@@ -1,6 +1,6 @@
 # Your First Machine
 
-So this _Machine_ will return a `Klout Id` when it's given a `Twitter Screen name` and an `API Key`.  The generated `get-klout-id` machine looks like this:
+Your first machine will return a Klout Id when it's given a `twitterScreenName` and an `apiKey`.  The generated `get-klout-id` machine looks like this:
 
 ```javascript
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
 };
 ```    
 
-First **_add_** the **inputs**:
+First define the inputs:
 
 ```javascript
   inputs: {
@@ -35,7 +35,7 @@ First **_add_** the **inputs**:
   },
 ```
 
-Next **_add_** the **exits**:
+Next define the exits:
 
 ```javascript
 exits: {
@@ -52,7 +52,7 @@ exits: {
 },
 ```
 
-Finally, implement the **function**:
+Finally, implement the function:
 
 ```javascript
   fn: function(inputs, exits) {
