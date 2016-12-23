@@ -100,7 +100,7 @@ Finally, implement the **function**:
   },
 ```
 
-Here's the complete code for the `Get Kout Id` _Machine_.
+Here's the complete code for the `Get Klout Id` _Machine_.
 
 ```javascript
 module.exports = {
