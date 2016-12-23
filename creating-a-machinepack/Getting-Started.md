@@ -28,13 +28,15 @@ In the process of using machines for the past year or so, the core team behind t
 
 ##### Yeoman generator
 
-> The Yeoman generator (`generator-machinepack`) requires [Yeoman](http://yeoman.io/).  If you don't already have Yeoman globally installed, you'll want to do that before proceeding:
-> 
-> ```sh
-> $ npm install -g yo
-> ```
+For your convenience, there is a Yeoman generator for creating machinepacks.  You will likely only use this tool every now and then, but it's worth it to get you off the ground running.  
 
-There is a Yeoman generator for machinepacks for your convenience.  You will likely only use this tool every now and then, but it's worth it to get you off the ground running.  To install:
+The Yeoman generator (`generator-machinepack`) requires [Yeoman](http://yeoman.io/).  If you don't already have Yeoman globally installed, you'll want to do that before proceeding:
+
+```sh
+$ npm install -g yo
+```
+
+To install the generator:
 
 ```sh
 $ npm install -g generator-machinepack
@@ -52,16 +54,16 @@ $ npm install -g machinepack
 
 > **Note:** If you run into install issues, try `$ sudo`.
 
-###Generating your first `machinepack`.
-I ran across an interesting [API](https://klout.com/s/developers/v2) from [Klout](https://klout.com/). Klout uses social media analytics to rank people based upon their social influence via a Klout Score.  So we'll create a couple of machines that will return a person's _Klout ID_ and based upon that _id_, their _Klout Score_. 
+### Generating your first machinepack.
+I ran across an interesting [API](https://klout.com/s/developers/v2) from [Klout](https://klout.com/). Klout uses social media analytics to rank people based upon their social influence via a Klout Score.  So we'll create a couple of machines that will return a person's Klout ID and Klout score. 
 
-To begin, we'll generate a _bare bones_ `machinepack` by **_typing_**:
+To begin, we'll generate a bare bones machinepack by typing:
 
 ```sh
 $ yo machinepack
 ```
 
-You'll be prompted for a friendly `name`.   By entering _Klout_, the `machinepack` _name_ will become `machinepack-klout`.
+You'll be prompted for a friendly name.   By entering "Klout", the machinepack name will become `machinepack-klout`.
 
 ```sh
      _-----_
@@ -79,7 +81,7 @@ You'll be prompted for a friendly `name`.   By entering _Klout_, the `machinepac
  Klout
 ```
 
-Next, you'll be asked to provide a `machinepack` `description`.
+Next, you'll be asked to provide a description.
 
 ```sh
 ? Describe this machinepack in 80 characters or less.
@@ -87,13 +89,13 @@ Next, you'll be asked to provide a `machinepack` `description`.
  (Work with klout.) Communicate with the Klout API to get Ids, Klout Scores, etc.
 ```
 
-The generator gives you the option to create an _example_ `machine`.  Let's go ahead and type `y` for yes and generate the _example_ `machine`.
+The generator gives you the option to create an example machine.  Let's go ahead and type `y` for yes and generate the example machine.
 
 ```sh
 ? Want me to create an example machine (`say-hello.js`) to help you get started? (y/N) y
 ```
 
-Finally, you'll be prompted whether to put this _example_ `machine` in a _new_ folder within the `machinepack` or at the **root** of the `machinepack`.  Let's use the default, and have the generator create a folder for us by **_pressing_** `enter`.
+Finally, you'll be prompted to specify whether to put this example machine in a **new** folder within the machinepack, or at the **root** of the machinepack.  Let's just press enter to use the default, and have the generator create a folder for us.
 
 ```sh
 ? Where should this new machinepack be generated? 
@@ -101,17 +103,20 @@ Finally, you'll be prompted whether to put this _example_ `machine` in a _new_ f
   Within the current directory (/Users/jgalt/Development/) 
 ```
 
-All of the necessary structure will be created including installing any _dependencies_.
+All of the necessary structure will be created including installing any dependencies.
 
-###Exploring your first `machinepack`.
+### Exploring your first machinepack.
 
-Change into the new `machinepack-klout` folder by **_typing_**:
+First, `cd` into your new machinepack folder.
+```
+$ cd machinepack-klout
+```
 
-`$ cd machinepack-klout`
+Now let's take a look at the example machine:
 
-We can take a look at the example `machine` by **_typing_**:
-
-`$ machinepack ls`
+```
+$ machinepack ls
+```
 
 You should see the following in your terminal window:
 
@@ -121,9 +126,9 @@ There is only 1 machine in this machinepack.
  • say-hello
 ```
 
-####So what does `say-hello` do?
+#### So what does `say-hello` do?
 
-We could create a node script that requires the machine programatically and then calls `.exec()` on it, but that sort of sucks.  Alternatively, we could use the node REPL, but.... still sort of sucks.
+We could create a node script that requires the machine programatically and then calls `.exec()` on it, but that sort of sucks.  Alternatively, we could use the node REPL, but... still sort of sucks.
 
 Instead, we'll take advantage of the most powerful feature of the `machinepack` command-line tool- the ability to execute a machine interactively. To run a machine from the command-line:
 
@@ -170,7 +175,7 @@ You'll be prompted for a "friendly name":
 _(Don't worry if you mess up, you can always change this later)_
 
 
-The string you enter will be used as the `friendlyName` for the new machine, and the machine's `identity` will also be inferred from it automatically. For example, if you enter "_Get Klout id_", you'll end up with a file in your machines folder named "_get-klout-id_".  In userland, you'll be able to call this machine as the `.getKloutId()` method on the machinepack.  This method name is determined by converting the dash-delimited `identity` into camel-case.
+The string you enter will be used as the `friendlyName` for the new machine, and the machine's `identity` will also be inferred from it automatically. For example, if you enter "Get Klout id", you'll end up with a file in your machines folder named `get-klout-id`.  In userland, you'll be able to call this machine as the `.getKloutId()` method on the machinepack.  This method name is determined by converting the dash-delimited `identity` into camel-case.
 
 
 Next, you'll be asked for a `description`.  Make sure you type something less than 80 characters long, and in the imperative mood (e.g. "Delete all..." not "Deletes all...").  This is important for consistency and proper grammar and punctuation in the generated documentation.
