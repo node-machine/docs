@@ -184,15 +184,15 @@ $ npm install lodash --save
 $ npm install machinepack-http --save
 ```
 
-### Running the `Get Klout Id` _Machine_
+### Running the machine
 
-To execute the _Machine_ **type**:
+To execute the machine:
 
 ```sh
 $ machinepack exec get-klout-id
 ```
 
-You'll be prompted for a _Twitter Screen Name_ and an _API Key_.  The _machine_ should display something like this:
+You'll be prompted for a Twitter screen name and your API key:
 
 ```sh
 ? Please enter the Twitter screen name of Klout Id
@@ -217,17 +217,17 @@ ________________________________________________________________¸
  machinepack exec get-klout-id --twitterScreenName='irlnathan' --apiKey='bb8xy34;;dls9facob8ad44'
 ```
 
-> **Note:** Check out the "To run again:" message, it will save you time :)
+> **Hint:** Check out the "To run again:" message- it will save you time.
 
-### Creating a second _Machine_ -- `Get Klout Score`
+### Creating a second machine
 
-The _Get Klout Score Machine_ will share some code with the _Get Klout Id Machine_ so I'll use the copy command in the _Machinepack_ command-line tools to get started:
+The "Get Klout Score" machine will share some code with the "Get Klout Id" machine, so I'll use the copy command in the command-line tool:
 
 ```sh
 $ machinepack cp get-klout-id get-klout-score
 ```
 
-You should see something like this displayed.
+You should see something like:
 
 ```sh
 Copied: `get-klout-id` to new machine: `get-klout-score`
