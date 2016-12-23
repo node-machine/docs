@@ -185,7 +185,7 @@ $ npm install lodash --save
 $ npm install machinepack-http --save
 ```
 
-###Running the `Get Klout Id` _Machine_
+### Running the `Get Klout Id` _Machine_
 
 To execute the _Machine_ **type**:
 
@@ -218,9 +218,9 @@ ________________________________________________________________¸
  machinepack exec get-klout-id --twitterScreenName='irlnathan' --apiKey='bb8xy34;;dls9facob8ad44'
 ```
 
->**Note:** Check out the "To run again:" message, it will save you time :)
+> **Note:** Check out the "To run again:" message, it will save you time :)
 
-###Creating a second _Machine_ -- `Get Klout Score`
+### Creating a second _Machine_ -- `Get Klout Score`
 
 The _Get Klout Score Machine_ will share some code with the _Get Klout Id Machine_ so I'll use the copy command in the _Machinepack_ command-line tools to get started:
 
@@ -234,7 +234,7 @@ You should see something like this displayed.
 Copied: `get-klout-id` to new machine: `get-klout-score`
 ```
 
-###Implementing the `Get Klout Score` _Machine_
+### Implementing the `Get Klout Score` _Machine_
 
 So this _Machine_ will return a `Klout Score` when it's given a `Klout ID` and an `API Key`.  The copied `get-klout-score` machine looks like this:
 
@@ -325,7 +325,7 @@ module.exports = {
 
 Next, **_edit_** the **inputs**.
 
->**Note:** The `apiKey` _input_ remains the same.
+> **Note:** The `apiKey` _input_ remains the same.
 
 ```javascript
 inputs: {
@@ -344,7 +344,7 @@ inputs: {
 
 Next, **_edit_** the **exits**.
 
->**Note:** The `wrongOrNoKey` exit remains the same.
+> **Note:** The `wrongOrNoKey` exit remains the same.
 
 ```javascript
 exits: {
@@ -492,7 +492,7 @@ module.exports = {
 };
 ```
 
-###Running the `Get Klout Score` _Machine_
+### Running the `Get Klout Score` _Machine_
 
 To execute the _Machine_ **type**:
 
@@ -525,4 +525,4 @@ ________________________________________________________________¸
  machinepack exec get-klout-score --kloutId='52917300386935988' --apiKey='bb8xy34;;dls9facob8ad44'
 ```
 
->**Note:** Check out the "To run again:" message, it will save you time :)
+> **Note:** Check out the "To run again:" message, it will save you time :)
