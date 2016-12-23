@@ -79,7 +79,7 @@ You'll be prompted for a friendly `name`.   By entering _Klout_, the `machinepac
  Klout
 ```
 
-Next, you'll be asked to provide a `machinepack` `description`.  We'll enter, _Communicate with the Klout API to get Ids, Klout Scores, etc._
+Next, you'll be asked to provide a `machinepack` `description`.
 
 ```sh
 ? Describe this machinepack in 80 characters or less.
