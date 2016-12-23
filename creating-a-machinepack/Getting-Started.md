@@ -169,7 +169,7 @@ You'll be prompted for a "friendly name":
 ```sh
 ? What would you like to use as the "friendly name" for your new machine?
 (e.g. "Get auth token" or "Delete account")
- Get Klout id
+ Get Klout iD
 ```
 
 _(Don't worry if you mess up, you can always change this later)_
