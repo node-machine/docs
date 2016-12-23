@@ -1,11 +1,11 @@
 # Your First Machine
 
-Your first machine will return a Klout Id when it's given a `twitterScreenName` and an `apiKey`.  The generated `get-klout-id` machine looks like this:
+Your first machine will fetch the ID for a Klout user's account when given a `twitterScreenName` and an `apiKey`.  The newly-generated `get-klout-id` machine looks like this:
 
 ```javascript
 module.exports = {
-  friendlyName: 'Get Klout Id',
-  description: 'Get the Klout Id from a Twitter screen name.',
+  friendlyName: 'Get Klout ID',
+  description: 'Get the Klout ID from a Twitter screen name.',
   extendedDescription: '',
   inputs: {},
   defaultExit: 'success',
@@ -18,13 +18,13 @@ module.exports = {
 };
 ```    
 
-First define the inputs:
+First, define the inputs:
 
 ```javascript
   inputs: {
     twitterScreenName: {
       example: 'tuneyards',
-      description: 'The Twitter screen name of Klout Id',
+      description: 'The Twitter screen name for a Klout user.',
       required: true
     },
     apiKey: {
@@ -35,7 +35,7 @@ First define the inputs:
   },
 ```
 
-Next define the exits:
+Next, define the exits:
 
 ```javascript
 exits: {
@@ -100,29 +100,29 @@ Finally, implement the function:
   },
 ```
 
-Your first machine is ready to run! You can find the complete code in [this gist](https://gist.github.com/rachaelshaw/937b44f40995edb44b947090930c46a2).
+Your first machine is ready to run! You can find the example code for the completed machine in [this gist](https://gist.github.com/rachaelshaw/937b44f40995edb44b947090930c46a2).
 
 
 
 ### Running the machine
 
-First, install your dependencies:
+Before running the machine, make sure its dependencies are installed:
 
 ```sh
 $ npm install lodash --save
 $ npm install machinepack-http --save
 ```
 
-To execute the machine:
+Then, to execute the machine:
 
 ```sh
 $ machinepack exec get-klout-id
 ```
 
-You'll be prompted for a Twitter screen name and your API key:
+You'll be prompted for each of your machine's inputs, using the descriptions provided in the input definitions. Once you've entered them all, the machine will run.
 
 ```sh
-? Please enter the Twitter screen name of Klout Id
+? Please enter the Twitter screen name for a Klout user.
 twitterScreenName:  irlnathan
 ? Please enter your Klout API key.
 apiKey:  bb8xy34;;dls9facob8ad44
